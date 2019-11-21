@@ -1,0 +1,30 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  min-width: 185px;
+  padding: 20px 10px 0;
+}
+
+.elem {
+  padding: 0 10px;
+  line-height: 1.5;
+
+  &:hover {
+    background-color: #F5F6F7;
+    outline: 1px solid #DDDFE2;
+    padding: 0 10px;
+  }
+}
+
+.link {
+  display: flex;
+  color: #1D2129;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Serif, sans-serif;
+}
+
+.active {
+  background-color: #F5F6F7;
+  outline: 1px solid #DDDFE2;
+  padding: 0 10px;
+}
