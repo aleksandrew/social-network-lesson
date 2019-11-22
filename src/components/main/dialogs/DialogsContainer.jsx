@@ -2,6 +2,9 @@ import React from 'react'
 import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 // настраивает данные которе мы возьмём из state
@@ -28,6 +31,12 @@ const mapDispatchToPropsToProps = dispatch => {
   }
 };
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToPropsToProps)(Dialogs);
+export default compose(
+  connect(mapStateToProps, mapDispatchToPropsToProps), // 3 это и есть хок. Следующий вызов использует этот хок
+  withAuthRedirect //2
+)(Dialogs); //1
 
-export default DialogsContainer;
+// 1 - целевой файл
+// 2 - использует const AuthRedirectComponent = withAuthRedirect(Dialogs)
+// 3 - const DialogsContainer = connect(mapStateToProps, mapDispatchToPropsToProps)(AuthRedirectComponent)
+// 4 - export default DialogsContainer;
