@@ -26,13 +26,27 @@ export const usersAPI = {
       .then(response => {
         return response.data
       })
-  },
+  }
+};
+
+export const profileAPI = {
   viewProfile(userId = 2) {
     return instance.get(`profile/${userId}`)
       .then(response => {
         return response
       })
   },
+  getStatus(userId = 2) {
+    return instance.get(`profile/status/${userId}`)
+  },
+  upadateStatus(status) {
+    return instance.put(`profile/status`, {
+      status
+    })
+  }
+};
+
+export const authAPI = {
   me() {
     return instance.get(`auth/me`)
       .then(response => {
