@@ -9,19 +9,20 @@ import style from "./App.module.scss";
 
 let App = () => {
 
-  // if (window.location.pathname === '/login') {
-  //
-  //   return <div>
-  //     <div className={style.headerBackground}>
-  //       <div className={style.container}>
-  //         <HeaderContainer/>
-  //       </div>
-  //     </div>
-  //     <div className={style.container}>
-  //       <Route path='/login' render={() => <LoginPage/>}/>
-  //     </div>
-  //   </div>
-  // } else {
+  if (window.location.pathname === '/login') {
+
+    return <div>
+      <div className={style.headerBackground}>
+        <div className={style.container}>
+          <HeaderContainer/>
+        </div>
+      </div>
+      <div className={style.container}>
+        <Route path='/login' render={() => <LoginPage/>}/>
+      </div>
+    </div>
+
+  }
 
     return <div>
       <div className={style.headerBackground}>
@@ -34,7 +35,6 @@ let App = () => {
         <Main/>
       </div>
     </div>
-  // }
 };
 
 App = withRouter(App);

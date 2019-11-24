@@ -13,7 +13,6 @@ const initialState = {
     {id: 4, like: 1, post: 'Lorem ipsum.'},
     {id: 5, like: 5, post: 'Lorem.'}
   ],
-  newPostText: 'it-kamasutra.com',
   profile: null,
   status: "",
 };
@@ -23,8 +22,8 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       const newPost = {
-        id: 9,
-        post: state.newPostText,
+        id: state.postData.length + 1,
+        post: action.newPostBody,
         like: 0
       };
 
@@ -61,14 +60,9 @@ const profileReducer = (state = initialState, action) => {
 };
 
 // action creater
-export const addPostActionCreator = () => ({type: ADD_POST});
+export const addPostActionCreator = newPostBody => ({type: ADD_POST, newPostBody});
 export const setUserProfile = profile => ({type: SET_USER_PROFILE, profile});
 export const setStatus = status => ({type: SET_STATUS, status});
-
-export const updateNewPostActionCreator = text => ({
-  type: UPDATE_NEW_POST_TEXT,
-  text: text
-});
 
 
 // thunk
