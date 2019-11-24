@@ -19,14 +19,9 @@ const mapStateToProps = state => {
 
 // отправляет в презентационую компоненту
 const mapDispatchToPropsToProps = dispatch => {
-  console.log(dispatch)
   return {
-    sendMessage: () => {
-      dispatch(addMessageActionCreator());
-    },
-
-    updateNewMessageText: text => {
-      dispatch(updateNewMessageActionCreator(text));
+    sendMessage: newMessageBody => {
+      dispatch(addMessageActionCreator(newMessageBody));
     }
   }
 };
