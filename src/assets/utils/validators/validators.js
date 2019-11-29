@@ -1,10 +1,31 @@
-export const required = value => {
-  if (value) return undefined;
+export const validate = values => {
+  const errors = {};
 
-  return "Field is required"
-};
+  if (!values.newPostBody) {
+    errors.newPostBody = 'Required'
+  } else if (values.newPostBody.length > 30) {
+    errors.newPostBody = `Must be 30 characters or less`
+  }
 
-export const maxLengthCreator = maxLength => value => {
+  if (!values.newMessageBody) {
+    errors.newMessageBody = 'Required'
+  } else if (values.newMessageBody.length > 50) {
+    errors.newMessageBody = `Must be 50 characters or less`
+  }
 
-  return value && value.length > maxLength ? `Must be ${maxLength} characters or less` : undefined;
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (values.email.length > 30) {
+    errors.email = `Must be 30 characters or less`
+  }
+
+  if (!values.password) {
+    errors.password = 'Required'
+  } else if (values.password.length > 20) {
+    errors.password = `Must be 20 characters or less`
+  } else if (values.password.length < 6) {
+    errors.password = `Must be 6 characters or more`
+  }
+
+  return errors;
 };

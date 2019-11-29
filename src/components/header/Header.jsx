@@ -11,13 +11,16 @@ const Header = props => {
 
       <div className={classes.loginBlock}>
         {props.isAuth
-          ? props.login
+          ? <div>
+            {props.login}
+            <button onClick={props.logout}>Logout</button>
+            </div>
           : <NavLink className={classes.login}
                      to={'/login'}>Login</NavLink>
         }
       </div>
     </header>
   )
-}
+};
 
 export default Header;
